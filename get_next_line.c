@@ -6,7 +6,7 @@
 /*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:27:55 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/16 15:15:04 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:42:42 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ static char	*ft_read(int fd, char *buf, char **backup)
 	return (*backup);
 }
 
+/*	This function extracts the remaining content 
+	of a line AFTER A NEW LINE*/
+
 static char	*ft_gnl(char *line)
 {
 	int		i;
@@ -74,6 +77,9 @@ static char	*ft_gnl(char *line)
 		ft_clear_backup(&line);
 	return (remain_line);
 }
+
+/*	This function extracts a line of text from the 
+	input line up to the FIRST NEWLINE character.*/
 
 static char	*ft_extract(char *line)
 {
@@ -95,6 +101,8 @@ static char	*ft_extract(char *line)
 		return (NULL);
 	return (line);
 }
+
+/*	it just the begin..... */
 
 char	*get_next_line(int fd)
 {
