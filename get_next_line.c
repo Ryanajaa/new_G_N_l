@@ -6,7 +6,7 @@
 /*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:27:55 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/16 13:49:31 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:40:39 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static char	*ft_read(int fd, char *buf, char **backup)
 	return (*backup);
 }
 
-static char	*ft_get_new_line(char *line)
+static char	*ft_gnl(char *line)
 {
 	int		i;
-	char	*temp;
+	char	*remain_line;
 
 	if (!line)
 		return (NULL);
@@ -64,30 +64,30 @@ static char	*ft_get_new_line(char *line)
 		i++;
 	if (line[i] == '\0')
 		return (NULL);
-	temp = ft_substr(line, i + 1, -1);
-	if (!temp)
+	remain_line = ft_substr(line, i + 1, -1);
+	if (!remain_line)
 		return (NULL);
-	if (temp[0] == '\0')
+	if (remain_line[0] == '\0')
 		ft_clear_backup(&line);
-	return (temp);
+	return (remain_line);
 }
 
-static char	*ft_cut_line(char *line)
+static char	*ft_extract(char *line)
 {
 	int		i;
-	char	*new;
+	char	*temp_line;
 
 	if (!line)
 		return (NULL);
 	i = 0;
 	while (line[i] != '\0' && line[i] != '\n')
 		i++;
-	new = ft_strdup(line);
+	temp_line = ft_strdup(line);
 	free(line);
-	if (!new)
+	if (!temp_line)
 		return (NULL);
-	line = ft_substr(new, 0, i + 1);
-	free(new);
+	line = ft_substr(temp_line, 0, i + 1);
+	free(temp_line);
 	if (!line)
 		return (NULL);
 	return (line);
@@ -96,27 +96,27 @@ static char	*ft_cut_line(char *line)
 char	*get_next_line(int fd)
 {
 	char		*buf;
-	char		*line;
-	static char	*backup;
+	char		*current_line;
+	static char	*backup_buf;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buf)
 	{
-		if (backup)
-			return (ft_clear_backup(&backup));
+		if (backup_buf)
+			return (ft_clear_backup(&backup_buf));
 		return (NULL);
 	}
-	line = ft_read(fd, buf, &backup);
+	current_line = ft_read(fd, buf, &backup_buf);
 	free(buf);
-	backup = ft_get_new_line(line);
-	line = ft_cut_line(line);
-	if (!line)
+	backup_buf = ft_gnl(current_line);
+	current_line = ft_extract(current_line);
+	if (!current_line)
 	{
-		if (backup)
-			return (ft_clear_backup(&backup));
+		if (backup_buf)
+			return (ft_clear_backup(&backup_buf));
 		return (NULL);
 	}
-	return (line);
+	return (current_line);
 }
