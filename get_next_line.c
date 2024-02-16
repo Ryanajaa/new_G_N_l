@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarunota <jarunota@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:27:55 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/15 00:25:35 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:49:31 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+//free memory allocated for the backup buffer (*backup)
 
 static char	*ft_clear_backup(char **backup)
 {
@@ -21,20 +23,22 @@ static char	*ft_clear_backup(char **backup)
 	return (NULL);
 }
 
+//reads from the file descriptor fd into the buffer buf
+
 static char	*ft_read(int fd, char *buf, char **backup)
 {
-	int		check;
+	int		bytes;
 	char	*temp;
 
-	check = 1;
-	while (check)
+	bytes = 1;
+	while (bytes)
 	{
-		check = read(fd, buf, BUFFER_SIZE);
-		if (check == -1 && backup)
+		bytes = read(fd, buf, BUFFER_SIZE);
+		if (bytes == -1 && backup)
 			return (ft_clear_backup(backup));
-		if (check < 1)
+		if (bytes < 1)
 			break ;
-		buf[check] = '\0';
+		buf[bytes] = '\0';
 		if (!(*backup))
 			*backup = ft_strdup("");
 		temp = *backup;

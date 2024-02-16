@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarunota <jarunota@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:29:19 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/15 00:08:30 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:42:19 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+//calculates the length
 
 size_t	ft_strlen(const char	*s)
 {
@@ -22,6 +24,8 @@ size_t	ft_strlen(const char	*s)
 		i++;
 	return (i);
 }
+
+//searches for the first occurrence of the character
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -35,6 +39,8 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
+
+//duplicates
 
 char	*ft_strdup(const char *s1)
 {
@@ -58,6 +64,8 @@ char	*ft_strdup(const char *s1)
 	}
 	return (str);
 }
+
+//concatenates two strings
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -86,6 +94,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	tab[size_s1 + i] = '\0';
 	return (tab);
 }
+
+//creates a substring 
 
 char	*ft_substr(char const *s, size_t start, size_t len)
 {
