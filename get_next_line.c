@@ -6,7 +6,7 @@
 /*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:27:55 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/16 14:40:39 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:15:04 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static char	*ft_clear_backup(char **backup)
 	return (NULL);
 }
 
-//reads from the file descriptor fd into the buffer buf
+/*	reading from a file descriptor (fd) into a buffer (buf) 
+	with a specified size (BUFFER_SIZE). It continues reading until
+	it reaches the end of the file or encounters an error
+	The content read from the file is then appended to a backup buffer.*/
 
 static char	*ft_read(int fd, char *buf, char **backup)
 {
@@ -120,3 +123,30 @@ char	*get_next_line(int fd)
 	}
 	return (current_line);
 }
+
+// #define BUFFER_SIZE 1
+
+// char *get_next_line(int fd);
+
+// int main(void) {
+//     int fd;
+//     char *line;
+
+//     // Open the file for reading
+//     fd = open("test.txt", O_RDONLY);
+//     if (fd < 0) {
+//         perror("Error opening file");
+//         return 1;
+//     }
+
+//     // Read lines from the file using get_next_line
+//     while ((line = get_next_line(fd)) != NULL) {
+//         printf("%s\n", line);
+//         free(line);
+//     }
+
+//     // Close the file
+//     close(fd);
+
+//     return 0;
+// }

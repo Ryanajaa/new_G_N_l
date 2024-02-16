@@ -6,7 +6,7 @@
 /*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:29:19 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/16 13:42:19 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:17:21 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,11 @@ char	*ft_strdup(const char *s1)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
-	size_t	size_s1;
+	size_t	size_s1;	
 	char	*tab;
 
 	i = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	size_s1 = ft_strlen(s1);
+	size_s1 = 0;
 	tab = (char *)malloc(size_s1 + ft_strlen(s2) + 1);
 	if (!tab)
 		return (NULL);

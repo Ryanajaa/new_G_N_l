@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarunota <jarunota@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:22:10 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/13 23:27:25 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:10:42 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 1
 # endif
 
 # include <stdlib.h>
