@@ -6,7 +6,7 @@
 /*   By: jarunota <jarunota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 22:29:19 by jarunota          #+#    #+#             */
-/*   Updated: 2024/02/16 15:52:43 by jarunota         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:21:40 by jarunota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //calculates the length
 
-size_t	ft_strlen(const char	*s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
